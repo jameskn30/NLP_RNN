@@ -113,8 +113,8 @@ class Trainer():
         plt.show()
         
 
-    def train(self, model, optim, criterion,  train_dataloader, val_dataloader, \
-              test_dataloader, device = None, epochs = 10, save_path = None):
+    def train(self, model, optim, criterion,  train_dataloader, val_dataloader = None, \
+              test_dataloader = None, device = None, epochs = 10, save_path = None):
 
         if device == None:
             device = self.device
@@ -152,8 +152,16 @@ class Trainer():
 
             model.eval()
             train_accuracy, train_loss = self.score(metrics.accuracy_score, model, train_dataloader, device, criterion=criterion, name = 'train')
-            val_accuracy, val_loss = self.score(metrics.accuracy_score, model, val_dataloader, device, criterion=criterion, name = 'valid')
-            test_accuracy, test_loss = self.score(metrics.accuracy_score, model, test_dataloader, device, criterion=criterion, name = 'test')
+            if val_dataloader != None:
+                val_accuracy, val_loss = self.score(metrics.accuracy_score, model, val_dataloader, device, criterion=criterion, name = 'valid')
+            else:
+                val_accuracy, val_loss = None, None
+            
+            if test_dataloader != None:
+                test_accuracy, test_loss = self.score(metrics.accuracy_score, model, test_dataloader, device, criterion=criterion, name = 'test')
+            else:
+                test_accuracy, test_loss = None, None
+
 
             self.logger.debug(f'\n\
                             epoch = {e}\n\
