@@ -4,3 +4,4 @@
 **/dataset
 **/submission
 .DS_Store
+**/.vector_cache
