@@ -17,7 +17,8 @@ algorithm to use:
 
 - DQN, for discrete actions
 - PPO
-- 1 more TBD
+- TD3
+- DDPG
 
 
 
