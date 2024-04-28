@@ -20,6 +20,24 @@ algorithm to use:
 - TD3
 - DDPG
 
+Checklist:
 
+make sure to have history object saved for each run
+
+DQN: 
+breakout
+demon assault
+
+PPO:
+- ant
+- half cheetah
+- pendulum
+- double pendulum
+
+SAC:
+- ant
+- half cheetah
+- pendulum (OK)
+- double pendulum
 
 
