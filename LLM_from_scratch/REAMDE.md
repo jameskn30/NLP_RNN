@@ -1,3 +1,15 @@
+# Installing environment 
+
+### Anaconda
+
+1. install anaconda
+2. conda environments: 
+
+conda install pytorch torchvision torchaudio -c pytorch
+conda install matplotlib numpy seaborn nltk ipykernel
+pip install tiktoken
+
+
 # NOTES:
 Building LLM Manning
 
