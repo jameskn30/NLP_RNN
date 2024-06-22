@@ -1,6 +1,19 @@
 from torch import nn
 import torch
 
+class LayerNorm(nn.Module):
+    def __init__(self, emb_dim):
+        super().__init__()
+        self.eps = 1e-5
+        self.scale = nn.Parameter(torch.ones(emb_dim))
+        self.shift = nn.Parameter(torch.zeros(emb_dim))
+
+    def forward(self, x):
+        mean = x.mean(dim=-1, keepdim=True)
+        var = x.var(dim=-1, keepdim=True, unbiased=False)
+        norm_x = (x - mean) / torch.sqrt(var + self.eps)
+        return self.scale * norm_x + self.shift
+
 
 class MultiHeadAttention(nn.Module):
 
@@ -105,8 +118,8 @@ class TransformerBlock(nn.Module):
         self.ff = FeedForward(embed_dim)
         self.attn = MultiHeadAttention(
             embed_dim, embed_dim, context_length, n_heads, drop_rate, qkv_bias=qkv_bias)
-        self.norm1 = nn.LayerNorm(embed_dim)
-        self.norm2 = nn.LayerNorm(embed_dim)
+        self.norm1 = LayerNorm(embed_dim)
+        self.norm2 = LayerNorm(embed_dim)
         self.dropout = nn.Dropout(drop_rate)
 
     def forward(self, x):
@@ -147,8 +160,8 @@ class GPTModel(nn.Module):
 
         self.transformer_blocks = nn.Sequential(
             *[TransformerBlock(cfg) for _ in range(self.n_layers)])
-        self.final_norm = nn.LayerNorm(self.embed_dim)
-        self.out_head = nn.Linear(self.embed_dim, self.vocab_size, bias=False)
+        self.final_norm =   LayerNorm(self.embed_dim)
+        self.out_head =     nn.Linear(self.embed_dim, self.vocab_size, bias=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
 
