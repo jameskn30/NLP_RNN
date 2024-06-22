@@ -7,7 +7,7 @@
 
 conda install pytorch torchvision torchaudio -c pytorch
 conda install matplotlib numpy seaborn nltk ipykernel
-pip install tiktoken
+pip install tiktoken datasets transformers
 
 
 # NOTES:
