@@ -5,7 +5,10 @@
 1. install anaconda
 2. conda environments: 
 
-conda install pytorch torchvision torchaudio -c pytorch
+- install pytorch on conda with this https://pytorch.org/get-started/locally/
+
+After installing pytorch, run check_gpu.ipynb to check
+
 conda install matplotlib numpy seaborn nltk ipykernel anaconda:pandas
 pip install tiktoken datasets transformers
 
