@@ -6,7 +6,7 @@
 2. conda environments: 
 
 conda install pytorch torchvision torchaudio -c pytorch
-conda install matplotlib numpy seaborn nltk ipykernel
+conda install matplotlib numpy seaborn nltk ipykernel anaconda:pandas
 pip install tiktoken datasets transformers
 
 
