@@ -2,6 +2,11 @@
 **/checkpoint
 **/data
 **/dataset
+**/datasets
 **/submission
 .DS_Store
 **/.vector_cache
+**/.env
+**/__pycache__
+**/hidden
+**/checkpoints
