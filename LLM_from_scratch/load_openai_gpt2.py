@@ -20,8 +20,6 @@ model_names = {
     "gpt2-xl (1558M)": "openai-community/gpt2-xl"
 }
 
-
-
 BASE_CONFIG = {
     "vocab_size": 50257,    # Vocabulary size
     "context_length": 1024, # Context length
@@ -37,7 +35,8 @@ model_configs = {
     "gpt2-xl (1558M)":      {"emb_dim": 1600,   "n_layers": 48, "n_heads": 25},
 }
 
-CHOOSE_MODEL = "gpt2-small (124M)"
+CHOOSE_MODEL = "gpt2-large (774M)"
+SAVE_MODEL_NAME = 'gpt2-large'
 BASE_CONFIG.update(model_configs[CHOOSE_MODEL])
 
 gpt_hf = GPT2Model.from_pretrained(model_names[CHOOSE_MODEL], cache_dir="checkpoints")
@@ -90,4 +89,4 @@ gpt = GPTModel(BASE_CONFIG)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 load_weights(gpt, gpt_hf)
 
-torch.save(gpt, os.path.join('output', 'gpt.torch'))
+torch.save(gpt, os.path.join('output', f'{SAVE_MODEL_NAME}.torch'))

@@ -291,3 +291,91 @@ def generate(model, idx, max_new_tokens, context_size, temperature=0.0, top_k=No
         idx = torch.cat((idx, idx_next), dim=1)  # (batch_size, num_tokens+1)
 
     return idx
+
+def calc_loss_batch(input_batch, target_batch, model, device):
+    input_batch = input_batch.to(device)
+    target_batch = target_batch.to(device)
+
+    logits = model(input_batch)
+
+    loss = torch.nn.functional.cross_entropy(
+        logits.flatten(0,1), #flatten input, (2,3,10000) --> (6,10000)
+        target_batch.flatten() #target = (2,3) --> (6)
+    )
+
+    return loss
+
+def calc_loss_loader(dataloader, model, device, num_batches = None):
+    #NOTE: num_batches is a limit of evaluation batches
+    # to speed up if needed
+
+    total_loss = 0.
+
+    if len(dataloader) == 0:
+        return float('nan')
+    
+    elif num_batches is None:
+        num_batches = len(dataloader)
+
+    else:
+        num_batches = min(num_batches, len(dataloader))
+    
+    for i, (b_input, b_target) in enumerate(dataloader):
+        if i < num_batches:
+            loss = calc_loss_batch(b_input,b_target,model,device)
+            total_loss += loss.item()
+        else:
+            break
+    
+    return total_loss / num_batches
+
+def eval_model(model, train_loader, val_loader, device, eval_iter):
+    model.eval()
+    train_loss = calc_loss_loader(train_loader, model, device, num_batches= eval_iter)
+    val_loss = calc_loss_loader(val_loader, model, device, num_batches= eval_iter)
+    model.train()
+
+    return train_loss, val_loss
+    
+def train(
+    model: nn.Module, 
+    train_loader: DataLoader, 
+    val_loader: DataLoader, optimizer, 
+    device: torch.device, 
+    num_epochs, 
+    eval_freq,
+    eval_iter, 
+    start_context: str, 
+    tokenizer)->None:
+
+    train_losses, val_losses, track_tokens_seen = [], [], []
+
+    tokens_seen, global_steps = 0, -1 #NOTE: why need a token_seen?
+
+    for epoch in range(num_epochs):
+        model.train()
+
+        for x,y  in train_loader:
+            optimizer.zero_grad()
+
+            loss = calc_loss_batch(x, y, model, device)
+
+            loss.backward()
+            optimizer.step()
+
+            tokens_seen += x.numel()
+            global_steps += 1
+
+            if global_steps % eval_freq == 0: 
+                train_loss, val_loss = eval_model(model, train_loader, val_loader, device, eval_iter)
+
+                train_losses.append(train_loss)
+                val_losses.append(val_loss)
+
+                track_tokens_seen.append(tokens_seen)
+
+                print(f"ep {epoch},\ntrain_loss={train_loss:.3f}\nval_loss={val_loss:.3f}")
+        # generate a sample every epoch
+        generate(model, tokenizer, device, start_context)
+    
+    return train_losses, val_losses, tokens_seen
