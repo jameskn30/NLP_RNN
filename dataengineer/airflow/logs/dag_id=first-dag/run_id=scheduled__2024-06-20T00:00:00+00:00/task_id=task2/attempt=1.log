@@ -1,0 +1,21 @@
+[2024-10-12T18:18:57.303+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-10-12T18:18:57.315+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: first-dag.task2 scheduled__2024-06-20T00:00:00+00:00 [queued]>
+[2024-10-12T18:18:57.322+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: first-dag.task2 scheduled__2024-06-20T00:00:00+00:00 [queued]>
+[2024-10-12T18:18:57.323+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-10-12T18:18:57.359+0000] {taskinstance.py:2888} INFO - Executing <Task(BashOperator): task2> on 2024-06-20 00:00:00+00:00
+[2024-10-12T18:18:57.367+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=8481) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-10-12T18:18:57.368+0000] {standard_task_runner.py:72} INFO - Started process 8492 to run task
+[2024-10-12T18:18:57.367+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'first-dag', 'task2', 'scheduled__2024-06-20T00:00:00+00:00', '--job-id', '2017', '--raw', '--subdir', 'DAGS_FOLDER/first_dag.py', '--cfg-path', '/tmp/tmpksr7uw66']
+[2024-10-12T18:18:57.370+0000] {standard_task_runner.py:105} INFO - Job 2017: Subtask task2
+[2024-10-12T18:18:57.404+0000] {task_command.py:467} INFO - Running <TaskInstance: first-dag.task2 scheduled__2024-06-20T00:00:00+00:00 [running]> on host 50fe842129eb
+[2024-10-12T18:18:57.472+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='james' AIRFLOW_CTX_DAG_ID='first-dag' AIRFLOW_CTX_TASK_ID='task2' AIRFLOW_CTX_EXECUTION_DATE='2024-06-20T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-20T00:00:00+00:00'
+[2024-10-12T18:18:57.472+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-10-12T18:18:57.484+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-10-12T18:18:57.485+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'echo "Running task2"']
+[2024-10-12T18:18:57.491+0000] {subprocess.py:86} INFO - Output:
+[2024-10-12T18:18:57.492+0000] {subprocess.py:93} INFO - Running task2
+[2024-10-12T18:18:57.492+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-10-12T18:18:57.512+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-10-12T18:18:57.512+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=first-dag, task_id=task2, run_id=scheduled__2024-06-20T00:00:00+00:00, execution_date=20240620T000000, start_date=20241012T181857, end_date=20241012T181857
+[2024-10-12T18:18:57.548+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-10-12T18:18:57.555+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

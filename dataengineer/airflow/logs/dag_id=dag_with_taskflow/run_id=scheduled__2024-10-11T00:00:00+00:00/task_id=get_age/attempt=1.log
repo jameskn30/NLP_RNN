@@ -1,0 +1,18 @@
+[2024-10-12T19:27:38.272+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-10-12T19:27:38.286+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_taskflow.get_age scheduled__2024-10-11T00:00:00+00:00 [queued]>
+[2024-10-12T19:27:38.292+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_taskflow.get_age scheduled__2024-10-11T00:00:00+00:00 [queued]>
+[2024-10-12T19:27:38.292+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-10-12T19:27:38.300+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): get_age> on 2024-10-11 00:00:00+00:00
+[2024-10-12T19:27:38.305+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_with_taskflow', 'get_age', 'scheduled__2024-10-11T00:00:00+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/taskflow.py', '--cfg-path', '/tmp/tmpe9ec8i25']
+[2024-10-12T19:27:38.306+0000] {standard_task_runner.py:105} INFO - Job 28: Subtask get_age
+[2024-10-12T19:27:38.308+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1622) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-10-12T19:27:38.308+0000] {standard_task_runner.py:72} INFO - Started process 1634 to run task
+[2024-10-12T19:27:38.334+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_with_taskflow.get_age scheduled__2024-10-11T00:00:00+00:00 [running]> on host 91a8a8c9b949
+[2024-10-12T19:27:38.379+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='james' AIRFLOW_CTX_DAG_ID='dag_with_taskflow' AIRFLOW_CTX_TASK_ID='get_age' AIRFLOW_CTX_EXECUTION_DATE='2024-10-11T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-10-11T00:00:00+00:00'
+[2024-10-12T19:27:38.379+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-10-12T19:27:38.382+0000] {python.py:240} INFO - Done. Returned value was: 29
+[2024-10-12T19:27:38.394+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-10-12T19:27:38.394+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dag_with_taskflow, task_id=get_age, run_id=scheduled__2024-10-11T00:00:00+00:00, execution_date=20241011T000000, start_date=20241012T192738, end_date=20241012T192738
+[2024-10-12T19:27:38.406+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-10-12T19:27:38.418+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-10-12T19:27:38.419+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

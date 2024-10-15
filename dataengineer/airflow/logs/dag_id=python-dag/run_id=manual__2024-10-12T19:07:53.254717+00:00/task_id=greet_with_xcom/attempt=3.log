@@ -1,0 +1,19 @@
+[2024-10-12T19:17:55.597+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-10-12T19:17:55.606+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: python-dag.greet_with_xcom manual__2024-10-12T19:07:53.254717+00:00 [queued]>
+[2024-10-12T19:17:55.611+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: python-dag.greet_with_xcom manual__2024-10-12T19:07:53.254717+00:00 [queued]>
+[2024-10-12T19:17:55.611+0000] {taskinstance.py:2865} INFO - Starting attempt 3 of 6
+[2024-10-12T19:17:55.619+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): greet_with_xcom> on 2024-10-12 19:07:53.254717+00:00
+[2024-10-12T19:17:55.624+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'python-dag', 'greet_with_xcom', 'manual__2024-10-12T19:07:53.254717+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/python_dag.py', '--cfg-path', '/tmp/tmpfvn5a1ao']
+[2024-10-12T19:17:55.626+0000] {standard_task_runner.py:105} INFO - Job 22: Subtask greet_with_xcom
+[2024-10-12T19:17:55.626+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1160) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-10-12T19:17:55.628+0000] {standard_task_runner.py:72} INFO - Started process 1161 to run task
+[2024-10-12T19:17:55.650+0000] {task_command.py:467} INFO - Running <TaskInstance: python-dag.greet_with_xcom manual__2024-10-12T19:07:53.254717+00:00 [running]> on host 91a8a8c9b949
+[2024-10-12T19:17:55.694+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='james' AIRFLOW_CTX_DAG_ID='python-dag' AIRFLOW_CTX_TASK_ID='greet_with_xcom' AIRFLOW_CTX_EXECUTION_DATE='2024-10-12T19:07:53.254717+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-10-12T19:07:53.254717+00:00'
+[2024-10-12T19:17:55.695+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-10-12T19:17:55.717+0000] {logging_mixin.py:190} INFO - from xcom: firstname=None, lastname=None, age=None
+[2024-10-12T19:17:55.718+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-10-12T19:17:55.722+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-10-12T19:17:55.722+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=python-dag, task_id=greet_with_xcom, run_id=manual__2024-10-12T19:07:53.254717+00:00, execution_date=20241012T190753, start_date=20241012T191755, end_date=20241012T191755
+[2024-10-12T19:17:55.769+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-10-12T19:17:55.806+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-10-12T19:17:55.808+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

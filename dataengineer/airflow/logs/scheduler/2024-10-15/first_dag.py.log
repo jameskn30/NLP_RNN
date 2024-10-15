@@ -1,0 +1,29 @@
+[2024-10-15T15:06:02.365+0000] {processor.py:186} INFO - Started process (PID=194) to work on /opt/airflow/dags/first_dag.py
+[2024-10-15T15:06:02.365+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/first_dag.py for tasks to queue
+[2024-10-15T15:06:02.366+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.366+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/first_dag.py
+[2024-10-15T15:06:02.370+0000] {processor.py:925} INFO - DAG(s) 'first-dag' retrieved from /opt/airflow/dags/first_dag.py
+[2024-10-15T15:06:02.423+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.422+0000] {override.py:1900} INFO - Created Permission View: can edit on DAG:first-dag
+[2024-10-15T15:06:02.427+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.426+0000] {override.py:1900} INFO - Created Permission View: can read on DAG:first-dag
+[2024-10-15T15:06:02.429+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.429+0000] {override.py:1900} INFO - Created Permission View: can delete on DAG:first-dag
+[2024-10-15T15:06:02.432+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.432+0000] {override.py:1900} INFO - Created Permission View: can create on DAG Run:first-dag
+[2024-10-15T15:06:02.434+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.434+0000] {override.py:1900} INFO - Created Permission View: can read on DAG Run:first-dag
+[2024-10-15T15:06:02.436+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.436+0000] {override.py:1900} INFO - Created Permission View: can delete on DAG Run:first-dag
+[2024-10-15T15:06:02.438+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.438+0000] {override.py:1900} INFO - Created Permission View: menu access on DAG Run:first-dag
+[2024-10-15T15:06:02.438+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.438+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2024-10-15T15:06:02.443+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.443+0000] {dag.py:3262} INFO - Creating ORM DAG for first-dag
+[2024-10-15T15:06:02.448+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:02.448+0000] {dag.py:4180} INFO - Setting next_dagrun for first-dag to 2021-07-30 00:00:00+00:00, run_after=2021-07-31 00:00:00+00:00
+[2024-10-15T15:06:02.453+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/first_dag.py took 0.091 seconds
+[2024-10-15T15:06:33.645+0000] {processor.py:186} INFO - Started process (PID=215) to work on /opt/airflow/dags/first_dag.py
+[2024-10-15T15:06:33.646+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/first_dag.py for tasks to queue
+[2024-10-15T15:06:33.649+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:33.648+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/first_dag.py
+[2024-10-15T15:06:33.657+0000] {processor.py:925} INFO - DAG(s) 'first-dag' retrieved from /opt/airflow/dags/first_dag.py
+[2024-10-15T15:06:33.683+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:33.682+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2024-10-15T15:06:33.693+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:06:33.693+0000] {dag.py:4180} INFO - Setting next_dagrun for first-dag to 2021-07-30 00:00:00+00:00, run_after=2021-07-31 00:00:00+00:00
+[2024-10-15T15:06:33.702+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/first_dag.py took 0.061 seconds
+[2024-10-15T15:07:03.987+0000] {processor.py:186} INFO - Started process (PID=236) to work on /opt/airflow/dags/first_dag.py
+[2024-10-15T15:07:03.987+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/first_dag.py for tasks to queue
+[2024-10-15T15:07:03.988+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:07:03.988+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/first_dag.py
+[2024-10-15T15:07:03.993+0000] {processor.py:925} INFO - DAG(s) 'first-dag' retrieved from /opt/airflow/dags/first_dag.py
+[2024-10-15T15:07:04.005+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:07:04.005+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2024-10-15T15:07:04.016+0000] {logging_mixin.py:190} INFO - [2024-10-15T15:07:04.016+0000] {dag.py:4180} INFO - Setting next_dagrun for first-dag to 2021-07-30 00:00:00+00:00, run_after=2021-07-31 00:00:00+00:00
+[2024-10-15T15:07:04.024+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/first_dag.py took 0.041 seconds
