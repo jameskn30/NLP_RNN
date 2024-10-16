@@ -1,1 +1,1 @@
-docker compose down -v --rmi local 
+sudo docker compose down -v --rmi local 
