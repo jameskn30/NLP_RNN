@@ -1,0 +1,3 @@
+packages: 
+  - package: dbt-labs/dbt_utils #check github for latest version. https://github.com/dbt-labs/dbt-utils
+    version: 1.3.0

@@ -1,0 +1,1 @@
+sudo astro dev restart
