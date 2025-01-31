@@ -1,0 +1,12 @@
+
+    
+    
+    truncate table "dbt_tut1"."public"."sales";
+    -- dbt seed --
+    
+          insert into "dbt_tut1"."public"."sales" ("id", "Branch", "City", "Customer type", "Gender") values
+          (%s,%s,%s,%s,%s)
+      
+
+;
+  
