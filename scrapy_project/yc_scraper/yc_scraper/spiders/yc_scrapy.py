@@ -3,6 +3,7 @@ import os
 import logging
 from pprint import pprint
 import sys
+import json
 
 class YcScrapySpider(scrapy.Spider):
     name = "yc_scrapy"
@@ -50,17 +51,12 @@ class YcScrapySpider(scrapy.Spider):
         #company summary
         card_div = response.xpath("//div[@class='ycdc-card space-y-1.5 sm:w-[300px]']")
         if card_div:
-            founded_year = card_div.xpath(".//span[contains(., 'Founded:')]/following-sibling::span/text()").get()
-            team_size = card_div.xpath(".//span[contains(., 'Team Size:')]/following-sibling::span/text()").get()
+            # founded_year = card_div.xpath(".//span[contains(., 'Founded:')]/following-sibling::span/text()").get()
+            # team_size = card_div.xpath(".//span[contains(., 'Team Size:')]/following-sibling::span/text()").get()
             location = card_div.xpath(".//span[contains(., 'Location:')]/following-sibling::span/text()").get()
             group_partner = card_div.xpath(".//span[contains(., 'Group Partner:')]/following-sibling::a/text()").get()  # Check for link first
             group_partner_link = card_div.xpath(".//span[contains(., 'Group Partner:')]/following-sibling::a/@href").get()
 
-            # logging.info("founded year " + founded_year)
-            # logging.info("team size " + team_size)
-            # logging.info("location " + location)
-            # logging.info("group_partner " + group_partner)
-            # logging.info("group_partner link " + group_partner_link)
         else:
             logging.error(f'url error, {response.url}')
             return
@@ -124,11 +120,14 @@ class YcScrapySpider(scrapy.Spider):
         else:
             logging.error(f'url error, {response.url}')
             return
+        
+        st = response.css('[data-page]::attr(data-page)').get()
+        jo = json.loads(st)['props']
+        jc = jo['company']
 
         item = {
             'url':  response.url,
-            "year": founded_year,
-            "team_size": team_size,
+            'company_name': jc['name'],
             'location': location,
             "group_partner":group_partner,
             "group_partner link ": group_partner_link,
@@ -137,10 +136,14 @@ class YcScrapySpider(scrapy.Spider):
             'founders_socials': founders_socials,
             'season': self.season,
             'yc_year': self.year,
+            'batch': jc['batch_name'],
+            'year_founded': jc['year_founded'],
+            'num_founders': len(jc['founders']),
+            'team_size': jc['team_size'],
+            'cb_url': jc['cb_url'],
         }
 
         # logging.info('item ', item)
-        pprint(item)
 
         logging.info('OK, parsed' + response.url)
         logging.info('####')
