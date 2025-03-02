@@ -14,10 +14,11 @@
 - PPO: train Mujoco, humanoid
 - GRPO: mujoco
 - TD3: mujoco
+- use RL to train LLM reasoning model
+### Extra to robotics - 3 months 
 - Find quadruple leg robot training simulation to train a robot
 - model-based RL methods
 - immitation learning
-- use RL to train LLM reasoning model
 
 
 
