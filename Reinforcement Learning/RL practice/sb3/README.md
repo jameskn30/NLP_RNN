@@ -30,3 +30,84 @@ For better performance, increase the training budget
 - **Sparse rewards**: Try algorithms with HER
 - **Need for exploration**: SAC has built-in exploration (entropy)
 
+
+# Cheatsheet
+
+## Reinforcement Learning Algorithm Families
+
+### 1. Value-Based Methods
+**Examples:** DQN, Double DQN, Dueling DQN, Rainbow
+- **Core idea:** Learn the value of states/actions
+- **Pros:**
+  - Sample efficient for discrete action spaces
+  - Clear objective function (minimizing TD error)
+  - Can be more stable with proper implementation
+- **Cons:**
+  - Cannot naturally handle continuous action spaces
+  - May require significant replay buffer memory
+  - Often requires careful exploration strategy
+
+### 2. Policy Gradient Methods
+**Examples:** REINFORCE, VPG, TRPO
+- **Core idea:** Directly optimize policy parameters
+- **Pros:**
+  - Can learn stochastic policies
+  - Naturally handles continuous action spaces
+  - More straightforward objective (maximize expected return)
+- **Cons:**
+  - Often high variance in gradient estimates
+  - Sample inefficient
+  - Can converge to local optima
+
+### 3. Actor-Critic Methods
+**Examples:** A2C/A3C, PPO, SAC, DDPG, TD3
+- **Core idea:** Combine value function learning with policy optimization
+- **Pros:**
+  - Reduced variance compared to pure policy gradient
+  - Can handle continuous action spaces
+  - Often more stable than pure policy gradients
+- **Cons:**
+  - More complex implementation
+  - Two sets of parameters to optimize
+  - Balancing actor and critic learning can be tricky
+
+### 4. Model-Based RL
+**Examples:** MBPO, PETS, MuZero
+- **Core idea:** Learn a model of the environment for planning/simulation
+- **Pros:**
+  - Sample efficient (can plan without real interactions)
+  - Can generalize better with good models
+  - Works well when model is accurate
+- **Cons:**
+  - Model errors can compound ("model bias")
+  - Complex implementation
+  - Computationally expensive for planning
+
+## Key Terminology
+
+- **MDP (Markov Decision Process)**: Mathematical framework for RL with states, actions, transitions, rewards
+- **Value Functions**:
+  - **V(s)**: Expected return starting from state s
+  - **Q(s,a)**: Expected return taking action a in state s
+- **Policy (π)**: Strategy for selecting actions in states
+- **Return**: Sum of discounted rewards
+- **Discount Factor (γ)**: Weight for future rewards (0-1)
+- **Exploration vs Exploitation**: Balance between trying new actions and using known good actions
+- **On-policy vs Off-policy**:
+  - **On-policy**: Learn about the policy being followed
+  - **Off-policy**: Learn about a different policy than the one being followed
+- **Experience Replay**: Store and reuse past experiences for training
+- **Temporal Difference (TD) Learning**: Learn from incomplete episodes using bootstrapping
+- **Advantage Function (A)**: How much better an action is compared to average (Q(s,a) - V(s))
+- **Entropy Regularization**: Encouraging exploration by maximizing policy entropy
+
+## Special Techniques
+
+- **Prioritized Experience Replay**: Sample important transitions more frequently
+- **Hindsight Experience Replay (HER)**: Learn from failures by pretending they were successes
+- **Curiosity-Driven Exploration**: Generate intrinsic rewards for novel states
+- **Curriculum Learning**: Train on progressively harder tasks
+- **Imitation Learning**: Learn from expert demonstrations
+- **Multi-Agent RL**: Multiple agents learning simultaneously in shared environment
+
+
